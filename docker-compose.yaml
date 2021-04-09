@@ -1,0 +1,25 @@
+# Properties
+# version of docker-compose
+version: "3"
+# list programs we want docker to run
+services:
+  database:
+    # image name that contains the program. See https://hub.docker.com/_/postgres. alpine container is a bit lighter (takes less memory).
+    image: postgres:13-alpine
+    # credentials - creates admin/super user
+    environment:
+      # defines a different name for the default database. Default if not specified: value of POSTGRES_USER
+      - POSTGRES_DB=devnews
+      # used in conjunction with POSTGRES_PASSWORD to set a user and its password. Default if not specified: "postgres"
+      - POSTGRES_USER=devnews_user
+      # the only mandatory variable, required for you to use the PostgreSQL image
+      - POSTGRES_PASSWORD=devnews_pass
+    ports:
+      # port on our pc (outside container): port used inside docker container (5432 commonly used for db)
+      - "5431:5432"
+    volumes:
+      # enables us to save data
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
