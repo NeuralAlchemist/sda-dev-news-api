@@ -1,5 +1,15 @@
 # Dev News
 
+## Contents
+
+- [Introduction](#introduction)
+- [Learning Objectives](#learning-objectives)
+- [Setup](#setup)
+- [Assignment](#assignment)
+  - [Articles](#articles)
+  - [Exercise 1](#exercise-1)
+  - [Comments](#comments)
+
 ## Introduction
 This assignment is all about building the backend API for a developer news site where users can create articles, comment them and post their reactions (likes, dislikes). It doesn't require a graphical user interface so it is enough to be able to make requests and get plain json text responses via curl/Postman. 
 
