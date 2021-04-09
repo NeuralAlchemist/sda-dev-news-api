@@ -1,14 +1,22 @@
 package se.devnews;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JoinColumn(nullable = false)
+    @NotBlank
     private String body, authorName;
     @ManyToOne
+    @JoinColumn(nullable = false)
+    @NotNull
     private Article owner;
 
     public Comment(String body, String authorName) {
