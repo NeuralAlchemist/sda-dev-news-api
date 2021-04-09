@@ -1,9 +1,7 @@
 package se.devnews;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Article {
@@ -11,6 +9,8 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title, body, authorName;
+   @OneToMany(mappedBy = "owner")
+   private List<Comment> comments;
 
     public Article(String title, String body, String authorName) {
         this.title = title;
