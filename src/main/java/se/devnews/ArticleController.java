@@ -43,4 +43,12 @@ public class ArticleController {
         Article article = articleRepository.save(updatedArticle);
         return ResponseEntity.ok(article);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Article> deleteArticle(@PathVariable Long id){
+        Article toBeDeleted = articleRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+        articleRepository.delete(toBeDeleted);
+        return ResponseEntity.ok(toBeDeleted);
+
+    }
 }
