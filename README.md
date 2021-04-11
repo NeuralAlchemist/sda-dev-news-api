@@ -98,7 +98,7 @@ With the following endpoints:
 | Status | HTTP Method | HTTP Path | Action |
 | ------------|-----------|--------|--------|
 | :heavy_check_mark: | `GET`    | `/articles/{articleId}/comments`    | return all comments on article given by `articleId`. |
-|     | `GET`    | `/comments?authorName={authorName}` | return all comments made by author given by `authorName`. |
+| :heavy_check_mark:    | `GET`    | `/comments?authorName={authorName}` | return all comments made by author given by `authorName`. |
 | :heavy_check_mark: | `POST`   | `/articles/{articleId}/comments`    | create a new comment on article given by `articleId`. |
 | :heavy_check_mark: | `PUT`    | `/comments/{id}`                    | update the given comment. |
 |  | `DELETE` | `/comments/{id}`                    | delete the given comment. |
