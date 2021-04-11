@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,11 +39,22 @@ public class CommentController {
 
     // Return all comments on a given article
     @GetMapping("/articles/{articleId}/comments")
-    public ResponseEntity<List<Comment>> getAllComments(@PathVariable Long articleId) {
+    public ResponseEntity<List<Comment>> getAllCommentsByArticleId(@PathVariable Long articleId) {
         List<Comment> allComments = commentRepository
                 .findAll()
                 .stream()
                 .filter((item) -> item.getOwner().getId().equals(articleId))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(allComments);
+    }
+
+    // Return all comments made by a author
+    @GetMapping(value = "/comments")
+    public ResponseEntity<List<Comment>> getAllCommentsByAuthorName(@RequestParam(value = "authorName") String authorName) {
+        List<Comment> allComments = commentRepository
+                .findAll()
+                .stream()
+                .filter((item) -> item.getAuthorName().equals(authorName))
                 .collect(Collectors.toList());
         return ResponseEntity.ok(allComments);
     }
