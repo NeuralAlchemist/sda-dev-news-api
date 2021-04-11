@@ -61,13 +61,13 @@ Example JSON response when requesting an article:
 ```
 
 These are the endpoints for the article API that should exist:
-| Status | HTTP Method | HTTP Path | Action |
-| ------------|-----------|--------|--------|
-| :heavy_check_mark: | `GET`    | `/articles`      | return all articles. |
-| :heavy_check_mark: | `GET`    | `/articles/{id}` | return a specific article based on the provided id.|
-| :heavy_check_mark: | `POST`   | `/articles`      | create a new article.|
-| :heavy_check_mark: | `PUT`    | `/articles/{id}` | update the given article.|
-| :heavy_check_mark: | `DELETE` | `/articles/{id}` | delete the given article.|
+| HTTP Method | HTTP Path | Action |
+| ------------|-----------|--------|
+| `GET`    | `/articles`      | return all articles. |
+| `GET`    | `/articles/{id}` | return a specific article based on the provided id.|
+| `POST`   | `/articles`      | create a new article.|
+| `PUT`    | `/articles/{id}` | update the given article.|
+| `DELETE` | `/articles/{id}` | delete the given article.|
 
 #### Exercise 1
 Create an Article model and implement the above API.
@@ -94,12 +94,13 @@ Example JSON response when requesting a comment:
 ```
 With the following endpoints:
 
-| Status | HTTP Method | HTTP Path | Action |
-| :heavy_check_mark: | `GET`    | `/articles/{articleId}/comments`    | return all comments on article given by `articleId`. |
-|     | `GET`    | `/comments?authorName={authorName}` | return all comments made by author given by `authorName`. |
-| :heavy_check_mark: | `POST`   | `/articles/{articleId}/comments`    | create a new comment on article given by `articleId`. |
-| :heavy_check_mark: | `PUT`    | `/comments/{id}`                    | update the given comment. |
-|  | `DELETE` | `/comments/{id}`                    | delete the given comment. |
+| HTTP Method | HTTP Path | Action |
+| ------------|-----------|--------|
+| `GET`    | `/articles/{articleId}/comments`    | return all comments on article given by `articleId`. |
+| `GET`    | `/comments?authorName={authorName}` | return all comments made by author given by `authorName`. |
+| `POST`   | `/articles/{articleId}/comments`    | create a new comment on article given by `articleId`. |
+| `PUT`    | `/comments/{id}`                    | update the given comment. |
+| `DELETE` | `/comments/{id}`                    | delete the given comment. |
 
 #### Exercise 2
 Create a Comment model and implement the above API.
