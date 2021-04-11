@@ -101,7 +101,7 @@ With the following endpoints:
 | :heavy_check_mark:    | `GET`    | `/comments?authorName={authorName}` | return all comments made by author given by `authorName`. |
 | :heavy_check_mark: | `POST`   | `/articles/{articleId}/comments`    | create a new comment on article given by `articleId`. |
 | :heavy_check_mark: | `PUT`    | `/comments/{id}`                    | update the given comment. |
-|  | `DELETE` | `/comments/{id}`                    | delete the given comment. |
+| :heavy_check_mark: | `DELETE` | `/comments/{id}`                    | delete the given comment. |
 
 #### Exercise 2
 Create a Comment model and implement the above API.

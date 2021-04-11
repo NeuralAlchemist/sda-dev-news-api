@@ -49,7 +49,7 @@ public class CommentController {
     }
 
     // Return all comments made by a author
-    @GetMapping(value = "/comments")
+    @GetMapping("/comments")
     public ResponseEntity<List<Comment>> getAllCommentsByAuthorName(@RequestParam(value = "authorName") String authorName) {
         List<Comment> allComments = commentRepository
                 .findAll()
@@ -57,5 +57,12 @@ public class CommentController {
                 .filter((item) -> item.getAuthorName().equals(authorName))
                 .collect(Collectors.toList());
         return ResponseEntity.ok(allComments);
+    }
+
+    @DeleteMapping("/comments/{id}")
+    public ResponseEntity<Comment> deleteComment(@PathVariable Long id){
+        Comment comment = commentRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+        commentRepository.delete(comment);
+        return ResponseEntity.ok(comment);
     }
 }
