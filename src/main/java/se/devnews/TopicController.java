@@ -56,4 +56,12 @@ public class TopicController {
         Set<Topic> allTopicOfGivenArticle = givenArticle.getTopicsList();
         return ResponseEntity.ok(allTopicOfGivenArticle);
     }
+
+    // return all articles associates with the topicId
+    @GetMapping("/topics/{topicId}/articles")
+    public ResponseEntity<Set<Article>> getAllArticlesOfTopic(@PathVariable Long topicId){
+        Topic givenTopic = topicRepository.findById(topicId).orElseThrow(ResourceNotFoundException::new);
+        Set<Article> allArticlesOfGivenTopic = givenTopic.getArticles();
+        return ResponseEntity.ok(allArticlesOfGivenTopic);
+    }
 }
