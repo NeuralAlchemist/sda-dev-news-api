@@ -1,7 +1,9 @@
 package se.devnews;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Article {
@@ -11,6 +13,8 @@ public class Article {
     private String title, body, authorName;
    @OneToMany(mappedBy = "owner")
    private List<Comment> comments;
+   @ManyToMany
+   private Set<Topic> topicsList = new HashSet<>();
 
     public Article(String title, String body, String authorName) {
         this.title = title;
@@ -52,5 +56,13 @@ public class Article {
 
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
+    }
+
+    public Set<Topic> getTopicsList() {
+        return topicsList;
+    }
+
+    public void setTopicsList(Set<Topic> topics) {
+        this.topicsList = topics;
     }
 }
