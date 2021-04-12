@@ -1,20 +1,21 @@
 package se.devnews;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-public class Topics {
+public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
     private String name;
-    
-    private List<Article> articles;
+
+    @ManyToMany (mappedBy = "topicsList")
+    @JsonIgnore
+    private Set<Article> articles;
 
     public Long getId() {
         return id;
@@ -32,11 +33,11 @@ public class Topics {
         this.name = name;
     }
 
-    public List<Article> getArticles() {
+    public Set<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(Set<Article> articles) {
         this.articles = articles;
     }
 }
