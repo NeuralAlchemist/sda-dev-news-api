@@ -40,4 +40,11 @@ public class TopicController {
         articleRepository.save(article);
         return ResponseEntity.status(HttpStatus.CREATED).body(article);
     }
+
+    // return all topics
+    @GetMapping("/topics")
+    public ResponseEntity<List<Topic>> getAllTopics(){
+        List<Topic> allTopics = topicRepository.findAll();
+        return ResponseEntity.ok(allTopics);
+    }
 }
