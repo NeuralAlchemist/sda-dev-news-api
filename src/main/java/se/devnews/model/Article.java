@@ -1,4 +1,4 @@
-package se.devnews;
+package se.devnews.model;
 
 import javax.persistence.*;
 import java.util.HashSet;

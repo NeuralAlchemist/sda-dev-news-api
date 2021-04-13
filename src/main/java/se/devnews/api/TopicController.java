@@ -1,13 +1,17 @@
-package se.devnews;
+package se.devnews.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import se.devnews.*;
+import se.devnews.model.Article;
+import se.devnews.model.Topic;
+import se.devnews.repository.ArticleRepository;
+import se.devnews.repository.TopicRepository;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 public class TopicController {

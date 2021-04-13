@@ -1,6 +1,6 @@
-package se.devnews;
+package se.devnews.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import se.devnews.model.Article;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

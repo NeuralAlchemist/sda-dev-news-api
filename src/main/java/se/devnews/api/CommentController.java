@@ -1,11 +1,15 @@
-package se.devnews;
+package se.devnews.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import se.devnews.*;
+import se.devnews.model.Article;
+import se.devnews.model.Comment;
+import se.devnews.repository.ArticleRepository;
+import se.devnews.repository.CommentRepository;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
