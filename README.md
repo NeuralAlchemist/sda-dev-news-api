@@ -137,14 +137,14 @@ Endpoints:
 
 | Status | HTTP Method | HTTP Path | Action |
 | ------------|-----------|--------|--------|
-|     | `GET`    | `/topics` | return all topics. |
-|     | `GET`    | `/articles/{articleId}/topics` | return all topics associated with article given by `articleId`. |
+| :heavy_check_mark: | `GET`    | `/topics` | return all topics. |
+| :heavy_check_mark: | `GET`    | `/articles/{articleId}/topics` | return all topics associated with article given by `articleId`. |
 | :heavy_check_mark: | `POST`   | `/articles/{articleId}/topics` | associate the topic with the article given by `articleId`. If topic does not already exist, it is created. |
 | :heavy_check_mark: | `POST`   | `/topics` | create a new topic. |
-|     | `PUT`    | `/topics/{id}` | update the given topic. |
-|  | `DELETE` | `/topics/{id}` | delete the given topic. |
-|  | `DELETE` | `/articles/{articleId}/topics/{topicId}` | delete the association of a topic for the given article. The topic & article themselves remain. |
-|     | `GET`    | `/topics/{topicId}/articles` | return all articles associated with the topic given by `topicId`. |
+| :heavy_check_mark: | `PUT`    | `/topics/{id}` | update the given topic. |
+| :heavy_check_mark: | `DELETE` | `/topics/{id}` | delete the given topic. |
+| :heavy_check_mark: | `DELETE` | `/articles/{articleId}/topics/{topicId}` | delete the association of a topic for the given article. The topic & article themselves remain. |
+| :heavy_check_mark: | `GET`    | `/topics/{topicId}/articles` | return all articles associated with the topic given by `topicId`. |
 
 #### Exercise 3
 Create a Topic model and implement the above API.
