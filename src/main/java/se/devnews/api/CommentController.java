@@ -1,5 +1,6 @@
 package se.devnews.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,15 +16,16 @@ import java.util.stream.Collectors;
 
 @RestController
 public class CommentController {
+
     CommentRepository commentRepository;
     ArticleRepository articleRepository;
-
+    @Autowired
     public CommentController(CommentRepository commentRepository, ArticleRepository articleRepository) {
         this.commentRepository = commentRepository;
         this.articleRepository = articleRepository;
     }
 
-    // Create a comment for the articleId
+    // Create a new comment for the article given by articleId
     @PostMapping("/articles/{articleId}/comments")
     public ResponseEntity<Comment> createComment(@PathVariable Long articleId, @RequestBody Comment comment) {
         Article article = articleRepository.findById(articleId).orElseThrow(ResourceNotFoundException::new);
@@ -32,7 +34,7 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(comment);
     }
 
-    //Update a given comment
+    //Update the given comment
     @PutMapping("/comments/{id}")
     public ResponseEntity<Comment> updateCar(@PathVariable Long id, @Valid @RequestBody Comment updatedComment) {
         Comment comment = commentRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
@@ -52,7 +54,7 @@ public class CommentController {
         return ResponseEntity.ok(allComments);
     }
 
-    // Return all comments made by a author
+    // Return all comments made by the given author
     @GetMapping("/comments")
     public ResponseEntity<List<Comment>> getAllCommentsByAuthorName(@RequestParam(value = "authorName") String authorName) {
         List<Comment> allComments = commentRepository
@@ -63,6 +65,7 @@ public class CommentController {
         return ResponseEntity.ok(allComments);
     }
 
+    // Delete the given comment
     @DeleteMapping("/comments/{id}")
     public ResponseEntity<Comment> deleteComment(@PathVariable Long id){
         Comment comment = commentRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
