@@ -72,4 +72,20 @@ public class TopicController {
         topicRepository.save(updatedTopic);
         return ResponseEntity.ok(updatedTopic);
     }
+
+    @DeleteMapping("/topics/{id}")
+    public ResponseEntity<Topic> deleteTopic(@PathVariable Long id){
+        Topic toBeDeleted = topicRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+        topicRepository.delete(toBeDeleted);
+        return ResponseEntity.ok(toBeDeleted);
+    }
+
+    @DeleteMapping("/articles/{articleId}/topics/{topicId}")
+    public ResponseEntity<Article> deleteAssociation(@PathVariable Long articleId, @PathVariable Long topicId){
+        Article articleToBeDisassociated = articleRepository.findById(articleId).orElseThrow(ResourceNotFoundException::new);
+        Topic topicToBeDisassociated = topicRepository.findById(topicId).orElseThrow(ResourceNotFoundException::new);
+        articleToBeDisassociated.getTopicsList().remove(topicToBeDisassociated);
+        articleRepository.save(articleToBeDisassociated);
+        return ResponseEntity.ok(articleToBeDisassociated);
+    }
 }
